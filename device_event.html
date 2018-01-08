@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Device Event</title>
+</head>
+<body>
+    <div id="dataContainerOrientation">
+        No device orientation data
+    </div>
+    <div id="dataContainerMotion">
+        No device motion data
+    </div>
+<script type="text/javascript">
+    var dataContainerOrientation = document.querySelector('#dataContainerOrientation');
+    var dataContainerMotion = document.getElementById('#dataContainerMotion');
+
+    if (window.DeviceOrientationEvent) {
+        window.addEventListener('deviceorientation', function(event) {
+          var alpha = event.alpha;
+          var beta = event.beta;
+          var gamma = event.gamma;
+
+          dataContainerOrientation.innerHTML = 'alpha: ' + alpha + '<br/>beta: ' + beta + '<br />gamma: ' + gamma;
+        }, false);
+    }
+
+    if(window.DeviceMotion) {
+        window.addEventListener('devicemotion', function(event) {
+        var x = event.accelerationIncludingGravity.x;
+        var y = event.accelerationIncludingGravity.y;
+        var z = event.accelerationIncludingGravity.z;
+        var r = event.rotationRate;
+        var html =
+`Acceleration:
+    x: ${x}
+    y: ${y}
+    z: ${z}
+Rotation rate:
+    alpha: ${r.alpha}
+    beta: ${r.beta}
+    gamma: ${r.gamma}`;
+        dataContainerMotion.innerHTML = html;
+      });
+    }
+</script>
+</body>
+</html>
