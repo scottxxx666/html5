@@ -12,7 +12,7 @@
     </div>
 <script type="text/javascript">
     var dataContainerOrientation = document.querySelector('#dataContainerOrientation');
-    var dataContainerMotion = document.getElementById('#dataContainerMotion');
+    var dataContainerMotion = document.querySelector('#dataContainerMotion');
 
     if (window.DeviceOrientationEvent) {
         window.addEventListener('deviceorientation', function(event) {
@@ -24,7 +24,7 @@
         }, false);
     }
 
-    if(window.DeviceMotion) {
+    if(window.DeviceMotionEvent) {
         window.addEventListener('devicemotion', function(event) {
         var x = event.accelerationIncludingGravity.x;
         var y = event.accelerationIncludingGravity.y;
